@@ -1,0 +1,526 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&family=VT323&display=swap');
+
+body {
+  background: #f1f1f1;
+  margin-left: 20px;
+  font-family: "Poppins";
+  padding-top: 100px;
+  /* Increased padding to move the content down further */
+}
+header {
+  background: #ffffff;
+  padding: 5px 20px;
+  /* Reduced padding */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  /* Align to the left */
+}
+
+header .container {
+  max-width: none;
+  /* Remove max-width to allow full width */
+  margin: 0;
+  padding: 5px 5px;
+  /* Reduced padding */
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  /* Align contents to the left */
+  font-family: "Poppins", sans-serif;
+}
+
+header a {
+  color: #333;
+  text-decoration: none;
+  margin-left: 20px;
+  /* Adjusted margin for better spacing */
+  font-size: 1rem;
+  /* Adjusted font size */
+  transition: color 0.3s;
+}
+
+/* Ensure "Workout Planner" stays aligned to the left on smaller screens as well */
+@media (max-width: 768px) {
+  header {
+    padding: 10px 15px;
+    /* Adjusted padding for mobile */
+  }
+
+  .container {
+    flex-direction: row;
+    /* Ensure elements are in a row layout */
+    align-items: center;
+    text-align: left;
+    /* Align text to the left */
+    justify-content: flex-start;
+    /* Align contents to the left */
+  }
+
+  header a {
+    margin-left: 0;
+    margin-bottom: 10px;
+    font-size: 1rem;
+  }
+
+  .navbar {
+    display: none;
+    /* Hide navigation by default */
+    flex-direction: column;
+    width: 100%;
+    margin-top: 20px;
+    padding: 10px;
+    align-items: center;
+  }
+
+  .navbar a {
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 1.1rem;
+  }
+
+  .navbar.active {
+    display: flex;
+    /* Show navbar when active */
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar a {
+    font-size: 0.9rem;
+    padding: 8px 15px;
+  }
+
+  header a {
+    font-size: 0.9rem;
+  }
+}
+
+.pages {
+  max-width: 1400px;
+  padding: 20px;
+  margin: 20 auto;
+}
+
+h1 {
+  text-decoration: none;
+}
+.home {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 120px;
+  /* Remove justify-content for better control */
+}
+.workout-details {
+  background: #fff;
+  border-radius: 4px;
+  margin: 20px;
+  margin-left:30px ;
+  margin-right:49px ;
+  padding: 50px;
+  position: relative;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  /* Add a subtle shadow for better aesthetics */
+  transition: padding 0.3s ease, margin 0.3s ease;
+  /* Smooth transitions for padding and margin */
+}
+
+.workout-details h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.2em;
+  color: var(--primary);
+  transition: font-size 0.3s ease;
+  /* Responsive font-size transition */
+}
+
+.workout-details p {
+  margin: 0;
+  font-size: 0.9em;
+  color: #555;
+  transition: font-size 0.3s ease;
+  /* Responsive font-size transition */
+}
+
+.workout-details span {
+  position: relative;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  background: #f1f1f1;
+  padding: 6px;
+  border-radius: 50%;
+  color: #333;
+  transition: transform 0.3s ease;
+  /* Smooth interaction for hover */
+}
+
+.workout-details span:hover {
+  transform: scale(1.1);
+  /* Slight zoom effect on hover */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .workout-details {
+    margin: 10px;
+    /* Reduce margins for smaller screens */
+    padding: 15px;
+    /* Reduce padding for compact layout */
+  }
+
+  .workout-details h3 {
+    font-size: 1em;
+    /* Adjust font size for smaller screens */
+  }
+
+  .workout-details p {
+    font-size: 0.8em;
+    /* Adjust font size for smaller screens */
+  }
+
+  .workout-details span {
+    top: 10px;
+    right: 10px;
+    padding: 4px;
+    /* Reduce size of the span element */
+  }
+
+  footer .container {
+    flex-direction: column;
+    /* Stack the content vertically */
+    align-items: center;
+    text-align: center;
+  }
+
+  footer ul {
+    flex-direction: column;
+    /* Stack links vertically */
+    justify-content: center;
+    width: 100%;
+  }
+
+  footer ul li {
+    margin: 5px 0;
+  }
+
+  footer ul li a {
+    padding: 8px 0;
+    /* Adjust padding for vertical layout */
+    font-size: 0.9rem;
+    /* Adjust font size */
+  }
+}
+
+@media (max-width: 480px) {
+  footer .container {
+    padding: 10px 15px;
+    /* Reduce padding for very small screens */
+  }
+
+  footer ul li a {
+    padding: 5px 10px;
+    /* Reduce padding further for small screens */
+    font-size: 0.8rem;
+    /* Further reduce font size */
+  }
+}
+
+label,
+input {
+  display: block;
+}
+
+input {
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+  border: 1px solid #050404;
+  border-radius: 4px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+form button {
+  background: green;
+  border: 0;
+  color: #fff;
+  padding: 10px;
+  font-family: "Poppins";
+  border-radius: 4px;
+  cursor: pointer;
+  position: relative;
+}
+
+div.error {
+  padding: 10px;
+  background: #ffefff;
+  border: 1px solid;
+  color: var(--error);
+  border-radius: 4px;
+  margin: 20px 0;
+}
+
+nav ul {
+  list-style: none;
+  margin: 10px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-around;
+
+  /* Spread items across the entire width */
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+nav ul li {
+  margin: 0 20px;
+  /* Added horizontal margin for better spacing between items */
+}
+
+nav ul li a {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  font-size: 1.1rem;
+  padding: 14px 19px;
+  /* Adjusted padding for better responsiveness */
+  transition: background-color 0.3s;
+}
+
+nav ul li a:hover {
+  background-color: #f9f9f9;
+  color: white;
+  border-radius: 4px;
+}
+
+/* Bottom Navbar Styling */
+.bottom-navbar {
+  bottom: 0;
+  position: fixed;
+  width: 100%;
+  background-color: #fff;
+  padding: 1rem 0;
+}
+
+/* Footer Styling */
+footer {
+  background: #ffffff;
+  padding: 1rem 0;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+footer .container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  /* Allow wrapping for smaller screens */
+  font-family: "Poppins";
+}
+
+footer ul {
+  list-style: none;
+  padding: 2px;
+  display: flex;
+  flex-wrap: wrap;
+  /* Wrap items to the next line if needed */
+  margin: 0;
+}
+
+footer ul li {
+  margin: 0 10px;
+}
+
+footer ul li a {
+  color: #333;
+  text-decoration: none;
+  font-size: 1rem;
+  padding: 5px 30px;
+  display: flex;
+  transition: color 0.3s;
+}
+
+footer ul li a:hover {
+  color: #555;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  nav ul li {
+    margin: 10px 0;
+  }
+
+  footer .container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  footer ul {
+    justify-content: center;
+  }
+
+  footer ul li {
+    margin: 5px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  nav ul li a {
+    font-size: 0.9rem;
+    padding: 5px;
+  }
+
+  footer ul li a {
+    font-size: 0.9rem;
+  }
+}
+
+nav {
+  display: flex;
+  align-items: center;
+}
+form.signup,
+form.login {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 400px;
+  margin: 10px;
+  padding: 90px;
+  /* Reduced padding for a more compact look */
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  /* Added a subtle box shadow */
+}
+
+.container {
+  padding: 20px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.heading {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+  /* Increased heading size */
+  font-weight: bold;
+}
+
+.subheading {
+  margin-bottom: 10px;
+  color: #666;
+  /* Slightly darker subheading color */
+}
+
+.button {
+  margin-bottom: 10px;
+  background-color: #007bff;
+  /* Blue button color */
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  /* Bold labels */
+}
+
+.select {
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.checkbox {
+  margin-bottom: 10px;
+}
+
+.version {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 12px;
+  color: #999;
+}
+
+/* Optional: Add hover effect to buttons */
+.button:hover {
+  background-color: #0069d9;
+}
+/* Hamburger icon styles */
+.hamburger {
+  display: none;
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 25px;
+  height: 20px;
+}
+
+.hamburger span {
+  width: 100%;
+  height: 3px;
+  background-color: #333;
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Mobile Navigation */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .navbar {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    background-color: #ffffff;
+  }
+
+  .navbar.active {
+    display: flex;
+  }
+
+  .navbar a {
+    padding: 10px 20px;
+    width: 100%;
+    font-size: 1rem;
+    text-align: center;
+    transition: background-color 0.3s;
+  }
+
+  .navbar a:hover {
+    background-color: #f9f9f9;
+    color: white;
+    border-radius: 4px;
+  }
+}

@@ -1,10 +1,14 @@
 import { useState, useEffect } from 'react';
+import { useAuthContext } from '../hooks/useAuthContext';
+import { useWorkoutContext } from '../hooks/useWorkoutContext';
 
 const WorkoutDetails = ({ workout }) => {
+    const { dispatch } = useWorkoutContext()
     const [timer, setTimer] = useState(60); // Fixed 1-minute timer
     const [isRunning, setIsRunning] = useState(false); // To control timer start/stop
     const [isCompleted, setIsCompleted] = useState(false); // To track timer completion
-
+    const { user } = useAuthContext()
+    
     // Effect to decrease the timer every second when it's running
     useEffect(() => {
         let interval = null;
@@ -30,12 +34,24 @@ const WorkoutDetails = ({ workout }) => {
     };
 
     const handleClick = async () => {
+        if (!user) {
+            return
+        }
         const response = await fetch('/api/workout/' + workout._id, {
-            method: 'Delete',
+            method: 'DELETE',
+            headers: {
+                'Authorization': `Bearer ${user.token}`
+    
+            }
+        
         });
+        const json = await response.json()
+        
 
         if (response.ok) {
+            dispatch({type: 'DELETE_WORKOUT', payload: json })
             // Perform additional actions if needed
+            window.location.reload();
         }
     };
 
@@ -57,7 +73,7 @@ const WorkoutDetails = ({ workout }) => {
                 <strong>Timer:</strong> {timer > 0 ? `${timer} seconds` : "Time's up!"}
                 {isCompleted && <span style={{ marginLeft: "10px", color: "green" }}>✔</span>}
             </p>
-            <span onClick={handleClick}>Delete</span>
+            <span type="submit" onClick={handleClick}>Delete</span>
         </div>
     );
 };

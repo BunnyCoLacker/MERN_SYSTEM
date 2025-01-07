@@ -1,8 +1,11 @@
 import { Link } from 'react-router-dom';
 import { useLogout } from '../hooks/useLogout';
+import { useAuthContext } from '../hooks/useAuthContext';
 
 const Navbar = () => {
-const { logout } = useLogout()
+    const { logout } = useLogout()
+    const { user } = useAuthContext()
+
     const handleClick = () => {
     logout()
 }
@@ -21,33 +24,38 @@ const { logout } = useLogout()
                     </Link>
                     
                      <nav> 
-                        <ul>
-                            <li>
-                                  <li>
-                                <Link to="/login">Login</Link>
-                            </li>
-                            </li>
-                        </ul>
-
+                        {!user && (
+                            <ul>
+                                <li>
+                                    <li>
+                                    <Link to="/login">Login</Link>
+                                </li>
+                                </li>
+                            </ul>
+                        )}
                     </nav>
                      <nav> 
-                        <ul>
-                            <li>
-                                  <li>
-                                <Link to="/signup">Signup</Link>
-                            </li>
-                            </li>
-                        </ul>
-
+                        {!user && (
+                            <ul>
+                                <li>
+                                    <li>
+                                    <Link to="/signup">Signup</Link>
+                                </li>
+                                </li>
+                            </ul>
+                        )}
                     </nav>
                     <nav>
+                    {user && (
                         <div>
                             <ul>
                               <li>
-                                <button onClick={handleClick}>Logout</button>
+                                <span>{user.email}</span>
+                                <button onClick={handleClick}>Log out</button>
                                </li>
                           </ul>
                         </div>
+                    )}
                     </nav>
                 </div>
             </header>
